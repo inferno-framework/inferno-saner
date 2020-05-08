@@ -74,7 +74,7 @@ module Inferno
         modules = settings.modules.map { |m| Inferno::Module.get(m) }.compact
         @missing_validators = Inferno::Terminology.missing_validators
 
-        erb :index_onc_program, {}, modules: modules, presets: presets, hide_header: true
+        erb :index_saner, {}, modules: modules, presets: presets, hide_header: true
       end
     end
   end

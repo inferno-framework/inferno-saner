@@ -5,38 +5,18 @@ width="300px" />
 [![Build
 Status](https://travis-ci.org/onc-healthit/inferno.svg?branch=master)](https://travis-ci.org/onc-healthit/inferno-program)
 
-# Inferno Program Edition
+# Inferno for SANER
 
-## ONC 21st Century Cures open API certification Testing
+## The Situational Awareness for Novel Epidemic Response Implementation Guide Testing
 
-**Inferno Program Edition** performs API conformance testing for the [Notice of
-Proposed Rulemaking (NPRM) to Improve the Interoperability of Health
-Information](https://www.healthit.gov/topic/laws-regulation-and-policy/notice-proposed-rulemaking-improve-interoperability-health).
-It implements the test steps described in the [NPRM draft test method for
-170.315(g)(10) Standardized API for patient and population
-services](https://www.healthit.gov/sites/default/files/page/2019-03/170_315g_10_Standardized_API_for_Patient_and_Population_Services.pdf).
-This application can be [installed locally](#installation-and-deployment), and a
-public reference instance of this application can be accessed at
-[https://inferno.healthit.gov/inferno](https://inferno.healthit.gov/inferno).
+**Inferno SANER Edition** performs API conformance testing for the [Situational Awareness for Novel Epidemic Response Implementation Guide](http://build.fhir.org/ig/HL7/fhir-saner/).
 
-**Inferno Program Edition** is a pre-configured and customized version of the
-open source [Inferno](https://github.com/onc-healthit/inferno-program) FHIR
-testing tool, and only contains tests and functionality relevant to the ONC
-Certification Program.  Users interested in extending or reusing this open
+**Inferno SANER Edition** is a pre-configured and customized version of the
+open source [Inferno](https://github.com/onc-healthit/inferno) FHIR
+testing tool, and only contains tests and functionality relevant to the SANER Implementation Guide. 
+Users interested in extending or reusing this open
 testing capability to meet their own needs are encouraged to visit the [Inferno
 GitHub repository](https://github.com/onc-healthit/inferno).
-
-
-**Inferno Program Edition** currently tests conformance to the following
-standards as described in the proposed rule:
-* FHIR DSTU2 and Argonaut Data Query Implementation Guide v1
-* FHIR R4 and US Core R4 (an alternative to DSTU2 for comment)
-* SMART on FHIR App Launch Guide v1
-
-Prior to final release of the rule, these tests are considered draft and are
-subject to change.  Users are encouraged to [provide feedback](#contact-us)
-regarding these tests to ensure they are complete and accurately reflect the
-requirements of these sets of standards.
 
 ## Installation and Deployment
 
