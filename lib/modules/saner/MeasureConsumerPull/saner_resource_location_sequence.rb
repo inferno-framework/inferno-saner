@@ -123,7 +123,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -148,7 +148,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -173,7 +173,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -198,7 +198,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -223,7 +223,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -248,7 +248,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -273,7 +273,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -298,7 +298,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -323,7 +323,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -348,7 +348,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
       end
 

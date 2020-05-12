@@ -99,7 +99,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -124,7 +124,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -149,7 +149,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -174,7 +174,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -199,7 +199,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -224,7 +224,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
@@ -250,7 +250,7 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
         validate_reply_entries(bundled_resources, search_params)
       end
 
