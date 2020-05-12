@@ -33,6 +33,8 @@ module Inferno
               new_resource.entry.each_with_index do |entry, index|
                 type = 'SearchParameter'
                 search_parameter_resource = entry.resource
+                next if resource_path(search_parameter_resource) == 'SearchParameter/SearchParameter-code'
+
                 search_parameter_json = new_resource_json['entry'][index]['resource']
                 resource_by_path[resource_path(search_parameter_resource)] = search_parameter_json
                 resources_by_type[type].push(search_parameter_json)

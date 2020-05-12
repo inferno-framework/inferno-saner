@@ -25,7 +25,7 @@ module Inferno
           assert match_found, "url in Measure/#{resource.id} (#{values_found}) does not match url requested (#{value})"
 
         when 'code'
-          values_found = resolve_path(resource, 'code')
+          values_found = resolve_path(resource, 'topic.coding.code')
           values = value.split(/(?<!\\),/).each { |str| str.gsub!('\,', ',') }
           match_found = values_found.any? { |value_in_resource| values.include? value_in_resource }
           assert match_found, "code in Measure/#{resource.id} (#{values_found}) does not match code requested (#{value})"
@@ -94,7 +94,7 @@ module Inferno
         end
 
         search_params = {
-          'code': get_value_for_search_param(resolve_element_from_path(@resource_found, 'code') { |el| get_value_for_search_param(el).present? })
+          'code': get_value_for_search_param(resolve_element_from_path(@resource_found, 'topic') { |el| get_value_for_search_param(el).present? })
         }
         skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
