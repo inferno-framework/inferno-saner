@@ -1,37 +1,23 @@
-name: saner
-title: SANER - Standardized API Testing
-description: Situational Awareness for Novel Epidemic Response Implementation Guide Testing 
+name: saner_module
+title: SANER Module
+description : SANER Module
 fhir_version: r4
-default_test_set: test_procedure
-hide_optional: true
+default_test_set: ad_hoc_testing
 test_sets:
-  test_procedure:
+  ad_hoc_testing:
     view: default
     tests:
-      - name: Measure Consumer Pull
-        overview: |
-            Consumer Pull overview.
-        lock_variables: 
-        sequences:
-            - CapabilityStatementSequence
-      - name: Measure Consumer Push
-        overview: |
-            Consumer Push overview
-        lock_variables: 
-        sequences:
-            - CapabilityStatementSequence
-      - name: Measure Producer Pull
-        overview: |
-            Measure Producer Pull Overview
-        lock_variables:
-        sequences:
-            - CapabilityStatementSequence
-        input_instructions: 
-      - name: Measure Producer Push
+      - name: Measure Source Pull SANER Profiles
         run_all: true
-        run_skipped: true
-        overview: >
-            Measure Producer Push Overview
-        lock_variables: 
         sequences:
-            - CapabilityStatementSequence
+        - MeasureSourcePullPublicHealthMeasureReportSequence
+        - MeasureSourcePullsaner_resource_locationSequence
+        - MeasureSourcePullPublicHealthMeasureSequence
+        - MeasureSourcePullPublicHealthMeasureStratifierSequence
+      - name: Measure Consumer Push SANER Profiles
+        run_all: true
+        sequences:
+        - MeasureConsumerPushPublicHealthMeasureReportSequence
+        - MeasureConsumerPushPublicHealthMeasureSequence
+        - MeasureConsumerPushPublicHealthMeasureStratifierSequence
+        - MeasureConsumerPushsaner_resource_locationSequence

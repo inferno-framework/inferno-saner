@@ -26,15 +26,13 @@ module Inferno
         metadata[:sequences].each do |sequence|
           generate_sequence(sequence,  metadata[:capability_statement])
         end
-        generate_module(metadata)
       end
 
       def generate_tests(metadata)
         metadata[:sequences].each do |sequence|
-          
           puts "Generating test #{sequence[:name]}"
 
-          create_read_test(sequence)
+          create_read_test(sequence) if metadata[:capability_statement].include? 'Pull'
           # make tests for each SHALL and SHOULD search param, SHALL's first
           sequence[:searches]
             .select { |search_param| search_param[:expectation] == 'SHALL' }
@@ -54,7 +52,7 @@ module Inferno
 
             create_interaction_test(sequence, interaction)
           end
-          create_profile_validation_test(sequence)
+          create_profile_validation_test(sequence) if metadata[:capability_statement].include? 'Pull'
           # # create_must_support_test(sequence)
           # # create_multiple_or_test(sequence) unless sequence[:delayed_sequence]
           # create_references_resolved_test(sequence)

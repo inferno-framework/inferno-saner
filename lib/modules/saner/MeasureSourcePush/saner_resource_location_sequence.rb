@@ -17,24 +17,9 @@ module Inferno
 
       @resource_found = nil
 
-      test :resource_read do
-        metadata do
-          id '01'
-          name 'Server returns correct Location resource from the Location read interaction'
-          link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
-          description %(
-            This test will attempt to Reference to Location can be resolved and read.
-          )
-          versions :r4
-        end
-
-        resource_id = @instance.location_id
-        @resource_found = validate_read_reply(FHIR::Location.new(id: resource_id), FHIR::Location)
-      end
-
       test :create_interaction do
         metadata do
-          id '02'
+          id '01'
           name 'Server returns correct Location resource from Location create interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
@@ -47,7 +32,7 @@ module Inferno
 
       test :update_interaction do
         metadata do
-          id '03'
+          id '02'
           name 'Server returns correct Location resource from Location update interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
@@ -56,20 +41,6 @@ module Inferno
           )
           versions :r4
         end
-      end
-
-      test :validate_resources do
-        metadata do
-          id '04'
-          name 'Location resources returned from previous search conform to the Resource Location Profile.'
-          link ''
-          description %(
-
-          )
-          versions :r4
-        end
-
-        test_resources_against_profile('Location', 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
       end
     end
   end
