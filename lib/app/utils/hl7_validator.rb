@@ -33,9 +33,8 @@ module Inferno
     private
 
     def issues_by_severity(issues, severity)
-      issues.reject { |i| i.code == 'code-invalid' }
-        .select { |i| i.severity == severity }
-        .map { |iss| "#{issue_location(iss)}: #{iss&.details&.text}" }
+      issues.select { |i| i.severity == severity }
+          .map { |iss| "#{issue_location(iss)}: #{iss&.details&.text}" }
     end
 
     def issue_location(issue)
