@@ -5,12 +5,13 @@ require_relative '../generator_base'
 require_relative './search_test'
 require_relative './interaction_test'
 require_relative './read_test'
+require_relative './profile_validation_test'
 
 module Inferno
   module Generator
     class SanerGenerator < Generator::Base
       include CapabilityStatementParser
-      include SearchTest, InteractionTest, ReadTest
+      include SearchTest, InteractionTest, ReadTest, ProfileValidationTest
       def generate
         generate_sequences('MeasureConsumerPull')
         generate_sequences('MeasureConsumerPush')
@@ -53,9 +54,7 @@ module Inferno
 
             create_interaction_test(sequence, interaction)
           end
-
-          # create_include_test(sequence) if sequence[:include_params].any?
-          # create_resource_profile_test(sequence)
+          create_profile_validation_test(sequence)
           # # create_must_support_test(sequence)
           # # create_multiple_or_test(sequence) unless sequence[:delayed_sequence]
           # create_references_resolved_test(sequence)

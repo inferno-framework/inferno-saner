@@ -76,7 +76,9 @@ module Inferno
         skip 'Could not find parameter value for ["url"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
-        validate_search_reply(versioned_resource_class('Measure'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Measure'), bundled_resources)
       end
 
       test 'Server returns valid results for Measure search by code.' do
@@ -99,7 +101,9 @@ module Inferno
         skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
-        validate_search_reply(versioned_resource_class('Measure'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Measure'), bundled_resources)
       end
 
       test 'Server returns valid results for Measure search by definition-text.' do
@@ -122,7 +126,22 @@ module Inferno
         skip 'Could not find parameter value for ["definition-text"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
-        validate_search_reply(versioned_resource_class('Measure'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Measure'), bundled_resources)
+      end
+
+      test 'Measure resources returned from previous search conform to the Saner Public Health Measure Stratifier.' do
+        metadata do
+          id '05'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Measure')
       end
     end
   end

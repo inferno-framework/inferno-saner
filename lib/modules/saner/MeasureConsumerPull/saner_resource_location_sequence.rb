@@ -121,7 +121,9 @@ module Inferno
         skip 'Could not find parameter value for ["_id"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by _lastUpdated.' do
@@ -143,7 +145,9 @@ module Inferno
         skip 'Could not find parameter value for ["_lastUpdated"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by name.' do
@@ -165,7 +169,9 @@ module Inferno
         skip 'Could not find parameter value for ["name"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by identifier.' do
@@ -187,7 +193,9 @@ module Inferno
         skip 'Could not find parameter value for ["identifier"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address.' do
@@ -209,7 +217,9 @@ module Inferno
         skip 'Could not find parameter value for ["address"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address-city.' do
@@ -231,7 +241,9 @@ module Inferno
         skip 'Could not find parameter value for ["address-city"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address-country.' do
@@ -253,7 +265,9 @@ module Inferno
         skip 'Could not find parameter value for ["address-country"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address-postalcode.' do
@@ -275,7 +289,9 @@ module Inferno
         skip 'Could not find parameter value for ["address-postalcode"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address-state.' do
@@ -297,7 +313,9 @@ module Inferno
         skip 'Could not find parameter value for ["address-state"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
       end
 
       test 'Server returns valid results for Location search by address-use.' do
@@ -319,7 +337,22 @@ module Inferno
         skip 'Could not find parameter value for ["address-use"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
-        validate_search_reply(versioned_resource_class('Location'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('Location'), bundled_resources)
+      end
+
+      test 'Location resources returned from previous search conform to the Resource Location Profile.' do
+        metadata do
+          id '12'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Location')
       end
     end
   end

@@ -20,7 +20,9 @@ module Inferno
           skip 'Could not find parameter value for #{search_param[:names]} to search by.' if search_params.any? { |_param, value| value.nil? }
 
           reply = get_resource_by_params(versioned_resource_class('#{sequence[:resource]}'), search_params)
-          validate_search_reply(versioned_resource_class('#{sequence[:resource]}'), reply, search_params)
+          bundled_resources = fetch_all_bundled_resources(reply)
+          validate_reply_entries(bundled_resources, search_params)
+          save_resource_references(versioned_resource_class('#{sequence[:resource]}'), bundled_resources)
         )
         sequence[:tests] << search_test
       end

@@ -97,7 +97,9 @@ module Inferno
         skip 'Could not find parameter value for ["_id"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by date.' do
@@ -119,7 +121,9 @@ module Inferno
         skip 'Could not find parameter value for ["date"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by measure.' do
@@ -141,7 +145,9 @@ module Inferno
         skip 'Could not find parameter value for ["measure"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by subject.' do
@@ -163,7 +169,9 @@ module Inferno
         skip 'Could not find parameter value for ["subject"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by period.' do
@@ -185,7 +193,9 @@ module Inferno
         skip 'Could not find parameter value for ["period"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by reporter.' do
@@ -207,7 +217,9 @@ module Inferno
         skip 'Could not find parameter value for ["reporter"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
       end
 
       test 'Server returns valid results for MeasureReport search by code.' do
@@ -230,7 +242,22 @@ module Inferno
         skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
-        validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
+        bundled_resources = fetch_all_bundled_resources(reply)
+        validate_reply_entries(bundled_resources, search_params)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+      end
+
+      test 'MeasureReport resources returned from previous search conform to the Saner Public Health Measure Report.' do
+        metadata do
+          id '09'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('MeasureReport')
       end
     end
   end

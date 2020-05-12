@@ -57,6 +57,19 @@ module Inferno
           versions :r4
         end
       end
+
+      test 'Location resources returned from previous search conform to the Resource Location Profile.' do
+        metadata do
+          id '04'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Location')
+      end
     end
   end
 end
