@@ -12,7 +12,7 @@ module Inferno
           description: %()
         }
         search_test[:test_code] = %(
-          test_resources_against_profile('#{sequence[:resource]}')
+          test_resources_against_profile('#{sequence[:resource]}', '#{sequence[:profile]}')
         )
         sequence[:tests] << search_test
       end

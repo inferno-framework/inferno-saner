@@ -133,6 +133,20 @@ module Inferno
         save_resource_references(versioned_resource_class('Measure'), bundled_resources)
         validate_reply_entries(bundled_resources, search_params)
       end
+
+      test :validate_resources do
+        metadata do
+          id '05'
+          name 'Measure resources returned from previous search conform to the Saner Public Health Measure Stratifier.'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Measure', 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureStratifier')
+      end
     end
   end
 end

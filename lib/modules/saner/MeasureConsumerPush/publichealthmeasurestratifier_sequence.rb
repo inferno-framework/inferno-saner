@@ -57,6 +57,20 @@ module Inferno
           versions :r4
         end
       end
+
+      test :validate_resources do
+        metadata do
+          id '04'
+          name 'Measure resources returned from previous search conform to the Saner Public Health Measure Stratifier.'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Measure', 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureStratifier')
+      end
     end
   end
 end

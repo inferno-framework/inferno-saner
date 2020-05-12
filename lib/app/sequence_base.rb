@@ -529,8 +529,9 @@ module Inferno
         resources.each do |resource|
           # This checks to see if the base resource conforms to the specification
           # It does not validate any profiles.
-          resource_validation_errors = Inferno::RESOURCE_VALIDATOR.validate(resource, versioned_resource_class)
-          assert resource_validation_errors[:errors].empty?, "Invalid #{resource.resourceType}: #{resource_validation_errors[:errors].join("\n* ")}"
+
+          # resource_validation_errors = Inferno::RESOURCE_VALIDATOR.validate(resource, versioned_resource_class)
+          # assert resource_validation_errors[:errors].empty?, "Invalid #{resource.resourceType}: #{resource_validation_errors[:errors].join("\n* ")}"
 
           search_params.each do |key, value|
             validate_resource_item(resource, key.to_s, value)

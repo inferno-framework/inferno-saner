@@ -54,7 +54,7 @@ module Inferno
 
             create_interaction_test(sequence, interaction)
           end
-          # create_profile_validation_test(sequence)
+          create_profile_validation_test(sequence)
           # # create_must_support_test(sequence)
           # # create_multiple_or_test(sequence) unless sequence[:delayed_sequence]
           # create_references_resolved_test(sequence)

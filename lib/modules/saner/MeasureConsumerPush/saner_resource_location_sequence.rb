@@ -57,6 +57,20 @@ module Inferno
           versions :r4
         end
       end
+
+      test :validate_resources do
+        metadata do
+          id '04'
+          name 'Location resources returned from previous search conform to the Resource Location Profile.'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('Location', 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
+      end
     end
   end
 end

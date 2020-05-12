@@ -55,6 +55,20 @@ module Inferno
           versions :r4
         end
       end
+
+      test :validate_resources do
+        metadata do
+          id '04'
+          name 'MeasureReport resources returned from previous search conform to the Saner Public Health Measure Report.'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('MeasureReport', 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
+      end
     end
   end
 end

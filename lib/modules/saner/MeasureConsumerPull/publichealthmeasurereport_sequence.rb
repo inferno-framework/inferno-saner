@@ -253,6 +253,20 @@ module Inferno
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
         validate_reply_entries(bundled_resources, search_params)
       end
+
+      test :validate_resources do
+        metadata do
+          id '09'
+          name 'MeasureReport resources returned from previous search conform to the Saner Public Health Measure Report.'
+          link ''
+          description %(
+
+          )
+          versions :r4
+        end
+
+        test_resources_against_profile('MeasureReport', 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
+      end
     end
   end
 end
