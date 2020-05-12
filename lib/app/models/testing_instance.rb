@@ -88,6 +88,10 @@ module Inferno
       property :bulk_scope, String
       property :disable_bulk_data_require_access_token_test, Boolean, default: false
 
+      property :measurereport_id, String
+      property :location_id, String
+      property :measure_id, String
+
       # These are used by BDT
       property :bulk_public_key, String
       property :bulk_private_key, String

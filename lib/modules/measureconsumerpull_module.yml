@@ -7,13 +7,6 @@ test_sets:
   ad_hoc_testing:
     view: default
     tests:
-      - name: SMART App Launch
-        sequences:
-        - SMARTDiscoverySequence
-        - DynamicRegistrationSequence
-        - ManualRegistrationSequence
-        - StandaloneLaunchSequence
-        - EHRLaunchSequence
       - name: SANER Profiles
         run_all: true
         sequences:
