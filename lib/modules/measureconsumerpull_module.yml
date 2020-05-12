@@ -1,0 +1,24 @@
+name: measureconsumerpull
+title: SANER MeasureConsumerPull Module
+description : SANER MeasureConsumerPull Module
+fhir_version: r4
+default_test_set: ad_hoc_testing
+test_sets:
+  ad_hoc_testing:
+    view: default
+    tests:
+      - name: SMART App Launch
+        sequences:
+        - SMARTDiscoverySequence
+        - DynamicRegistrationSequence
+        - ManualRegistrationSequence
+        - StandaloneLaunchSequence
+        - EHRLaunchSequence
+      - name: SANER Profiles
+        run_all: true
+        sequences:
+        - MeasureConsumerPullPublicHealthMeasureReportSequence
+        - MeasureConsumerPullsaner_resource_locationSequence
+        - MeasureConsumerPullPublicHealthMeasureSequence
+        - MeasureConsumerPullPublicHealthMeasureStratifierSequence
+
