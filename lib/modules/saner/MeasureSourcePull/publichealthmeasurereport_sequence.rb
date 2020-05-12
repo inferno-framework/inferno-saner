@@ -78,9 +78,10 @@ module Inferno
         @resource_found = validate_read_reply(FHIR::MeasureReport.new(id: resource_id), FHIR::MeasureReport)
       end
 
-      test 'Server returns valid results for MeasureReport search by _id.' do
+      test :search_by__id do
         metadata do
           id '02'
+          name 'Server returns valid results for MeasureReport search by _id.'
           link ''
           description %(
 
@@ -98,13 +99,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by date.' do
+      test :search_by_date do
         metadata do
           id '03'
+          name 'Server returns valid results for MeasureReport search by date.'
           link ''
           description %(
 
@@ -122,13 +124,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by measure.' do
+      test :search_by_measure do
         metadata do
           id '04'
+          name 'Server returns valid results for MeasureReport search by measure.'
           link ''
           description %(
 
@@ -146,13 +149,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by subject.' do
+      test :search_by_subject do
         metadata do
           id '05'
+          name 'Server returns valid results for MeasureReport search by subject.'
           link ''
           description %(
 
@@ -170,13 +174,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by period.' do
+      test :search_by_period do
         metadata do
           id '06'
+          name 'Server returns valid results for MeasureReport search by period.'
           link ''
           description %(
 
@@ -194,13 +199,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by reporter.' do
+      test :search_by_reporter do
         metadata do
           id '07'
+          name 'Server returns valid results for MeasureReport search by reporter.'
           link ''
           description %(
 
@@ -218,13 +224,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for MeasureReport search by code.' do
+      test :search_by_code do
         metadata do
           id '08'
+          name 'Server returns valid results for MeasureReport search by code.'
           link ''
           optional
           description %(
@@ -243,21 +250,8 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources)
-      end
-
-      test 'MeasureReport resources returned from previous search conform to the Saner Public Health Measure Report.' do
-        metadata do
-          id '09'
-          link ''
-          description %(
-
-          )
-          versions :r4
-        end
-
-        test_resources_against_profile('MeasureReport')
+        validate_reply_entries(bundled_resources, search_params)
       end
     end
   end

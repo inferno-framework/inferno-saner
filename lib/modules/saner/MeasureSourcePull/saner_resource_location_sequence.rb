@@ -102,9 +102,10 @@ module Inferno
         @resource_found = validate_read_reply(FHIR::Location.new(id: resource_id), FHIR::Location)
       end
 
-      test 'Server returns valid results for Location search by _id.' do
+      test :search_by__id do
         metadata do
           id '02'
+          name 'Server returns valid results for Location search by _id.'
           link ''
           description %(
 
@@ -122,13 +123,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by _lastUpdated.' do
+      test :search_by__last_updated do
         metadata do
           id '03'
+          name 'Server returns valid results for Location search by _lastUpdated.'
           link ''
           description %(
 
@@ -146,13 +148,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by name.' do
+      test :search_by_name do
         metadata do
           id '04'
+          name 'Server returns valid results for Location search by name.'
           link ''
           description %(
 
@@ -170,13 +173,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by identifier.' do
+      test :search_by_identifier do
         metadata do
           id '05'
+          name 'Server returns valid results for Location search by identifier.'
           link ''
           description %(
 
@@ -194,13 +198,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address.' do
+      test :search_by_address do
         metadata do
           id '06'
+          name 'Server returns valid results for Location search by address.'
           link ''
           description %(
 
@@ -218,13 +223,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address-city.' do
+      test :search_by_address_city do
         metadata do
           id '07'
+          name 'Server returns valid results for Location search by address-city.'
           link ''
           description %(
 
@@ -242,13 +248,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address-country.' do
+      test :search_by_address_country do
         metadata do
           id '08'
+          name 'Server returns valid results for Location search by address-country.'
           link ''
           description %(
 
@@ -266,13 +273,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address-postalcode.' do
+      test :search_by_address_postalcode do
         metadata do
           id '09'
+          name 'Server returns valid results for Location search by address-postalcode.'
           link ''
           description %(
 
@@ -290,13 +298,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address-state.' do
+      test :search_by_address_state do
         metadata do
           id '10'
+          name 'Server returns valid results for Location search by address-state.'
           link ''
           description %(
 
@@ -314,13 +323,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Location search by address-use.' do
+      test :search_by_address_use do
         metadata do
           id '11'
+          name 'Server returns valid results for Location search by address-use.'
           link ''
           description %(
 
@@ -338,21 +348,8 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Location'), bundled_resources)
-      end
-
-      test 'Location resources returned from previous search conform to the Resource Location Profile.' do
-        metadata do
-          id '12'
-          link ''
-          description %(
-
-          )
-          versions :r4
-        end
-
-        test_resources_against_profile('Location')
+        validate_reply_entries(bundled_resources, search_params)
       end
     end
   end

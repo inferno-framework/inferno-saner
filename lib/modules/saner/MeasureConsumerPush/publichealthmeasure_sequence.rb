@@ -57,19 +57,6 @@ module Inferno
           versions :r4
         end
       end
-
-      test 'Measure resources returned from previous search conform to the Saner Public Health Measure.' do
-        metadata do
-          id '04'
-          link ''
-          description %(
-
-          )
-          versions :r4
-        end
-
-        test_resources_against_profile('Measure')
-      end
     end
   end
 end

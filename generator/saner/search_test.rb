@@ -3,7 +3,7 @@ module Inferno
   module Generator
     module SearchTest
       def create_search_test(sequence, search_param)
-        test_key = :"search_by_#{search_param[:names].map(&:underscore).join('_')}",
+        test_key = :"search_by_#{search_param[:names].map(&:underscore).join('_')}"
         search_test = {
           tests_that: "Server returns valid results for #{sequence[:resource]} search by #{search_param[:names].join('+')}.",
           key: test_key,
@@ -21,8 +21,8 @@ module Inferno
 
           reply = get_resource_by_params(versioned_resource_class('#{sequence[:resource]}'), search_params)
           bundled_resources = fetch_all_bundled_resources(reply)
-          validate_reply_entries(bundled_resources, search_params)
           save_resource_references(versioned_resource_class('#{sequence[:resource]}'), bundled_resources)
+          validate_reply_entries(bundled_resources, search_params)
         )
         sequence[:tests] << search_test
       end

@@ -56,9 +56,10 @@ module Inferno
         @resource_found = validate_read_reply(FHIR::Measure.new(id: resource_id), FHIR::Measure)
       end
 
-      test 'Server returns valid results for Measure search by url.' do
+      test :search_by_url do
         metadata do
           id '02'
+          name 'Server returns valid results for Measure search by url.'
           link ''
           optional
           description %(
@@ -77,13 +78,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Measure search by code.' do
+      test :search_by_code do
         metadata do
           id '03'
+          name 'Server returns valid results for Measure search by code.'
           link ''
           optional
           description %(
@@ -102,13 +104,14 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources)
+        validate_reply_entries(bundled_resources, search_params)
       end
 
-      test 'Server returns valid results for Measure search by definition-text.' do
+      test :search_by_definition_text do
         metadata do
           id '04'
+          name 'Server returns valid results for Measure search by definition-text.'
           link ''
           optional
           description %(
@@ -127,21 +130,8 @@ module Inferno
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         bundled_resources = fetch_all_bundled_resources(reply)
-        validate_reply_entries(bundled_resources, search_params)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources)
-      end
-
-      test 'Measure resources returned from previous search conform to the Saner Public Health Measure.' do
-        metadata do
-          id '05'
-          link ''
-          description %(
-
-          )
-          versions :r4
-        end
-
-        test_resources_against_profile('Measure')
+        validate_reply_entries(bundled_resources, search_params)
       end
     end
   end
