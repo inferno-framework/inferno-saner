@@ -35,7 +35,7 @@ autorun_capability: false
 # Include extra tests: true or false
 include_extras: true
 
-badge_text: PROGRAM EDITION
+badge_text: SANER EDITION
 
 # Resource validator options: must be one of "internal" or "external". external_resource_validator_url is only used if resource_validator is set to external.
 resource_validator: external
@@ -43,7 +43,7 @@ external_resource_validator_url: http://validator_service:4567
 
 # module options: one or more must be set.  The first option in the list will be checked by default
 modules:
-  - onc_program
+  - saner
 
 disable_bulk_data_require_access_token_test: false
 

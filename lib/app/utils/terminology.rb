@@ -220,9 +220,6 @@ module Inferno
 
     def self.missing_validators
       return @missing_validators if @missing_validators
-
-      required_valuesets = Inferno::Module.get('uscore_v3.1.0').value_sets.reject { |vs| vs[:strength] == 'example' }.collect { |vs| vs[:value_set_url] }
-      @missing_validators = required_valuesets.compact - Inferno::Terminology.loaded_validators.keys.compact
     end
 
     # This function accepts a valueset URL, code, and optional system, and returns true
