@@ -30,7 +30,7 @@ module Inferno
           assert match_found, "_lastUpdated in Location/#{resource.id} (#{values_found}) does not match _lastUpdated requested (#{value})"
 
         when 'name'
-          values_found = resolve_path(resource, 'name | Location.alias')
+          values_found = resolve_path(resource, 'name')
           values = value.split(/(?<!\\),/).each { |str| str.gsub!('\,', ',') }
           match_found = values_found.any? { |value_in_resource| values.include? value_in_resource }
           assert match_found, "name in Location/#{resource.id} (#{values_found}) does not match name requested (#{value})"
@@ -118,7 +118,7 @@ module Inferno
         search_params = {
           '_id': get_value_for_search_param(resolve_element_from_path(@resource_found, 'id') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["_id"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -140,7 +140,7 @@ module Inferno
         search_params = {
           '_lastUpdated': get_value_for_search_param(resolve_element_from_path(@resource_found, 'meta.lastUpdated') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["_lastUpdated"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -160,9 +160,9 @@ module Inferno
         end
 
         search_params = {
-          'name': get_value_for_search_param(resolve_element_from_path(@resource_found, 'name | Location.alias') { |el| get_value_for_search_param(el).present? })
+          'name': get_value_for_search_param(resolve_element_from_path(@resource_found, 'name') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["name"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -184,7 +184,7 @@ module Inferno
         search_params = {
           'identifier': get_value_for_search_param(resolve_element_from_path(@resource_found, 'identifier') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["identifier"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -206,7 +206,7 @@ module Inferno
         search_params = {
           'address': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -228,7 +228,7 @@ module Inferno
         search_params = {
           'address-city': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address.city') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address-city"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -250,7 +250,7 @@ module Inferno
         search_params = {
           'address-country': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address.country') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address-country"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -272,7 +272,7 @@ module Inferno
         search_params = {
           'address-postalcode': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address.postalCode') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address-postalcode"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -294,7 +294,7 @@ module Inferno
         search_params = {
           'address-state': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address.state') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address-state"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
@@ -316,7 +316,7 @@ module Inferno
         search_params = {
           'address-use': get_value_for_search_param(resolve_element_from_path(@resource_found, 'address.use') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["address-use"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)

@@ -17,7 +17,7 @@ module Inferno
         search_params = get_search_params(search_param[:names], sequence)
         search_test[:test_code] = %(
           #{search_params}
-          skip if search_params.any? { |_param, value| value.nil? }
+          skip 'Could not find parameter value for #{search_param[:names]} to search by.' if search_params.any? { |_param, value| value.nil? }
 
           reply = get_resource_by_params(versioned_resource_class('#{sequence[:resource]}'), search_params)
           validate_search_reply(versioned_resource_class('#{sequence[:resource]}'), reply, search_params)

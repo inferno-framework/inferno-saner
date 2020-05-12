@@ -31,16 +31,7 @@ module Inferno
           assert match_found, "code in Measure/#{resource.id} (#{values_found}) does not match code requested (#{value})"
 
         when 'definition-text'
-          values_found = resolve_path(resource, 'title | Measure.subtitle | Measure.publisher | Measure.description | Measure.purpose | Measure.usage |
-Measure.riskAdjustment | Measure.rateAggregation | Measure.clinicalRecommendationStatement | Measure.definition | Measure.guideance |
-Questionnaire.title | Questionnaire.publisher | Questionnaire.description | Questionnaire.purpose |
-ValueSet.title | ValueSet.publisher | ValueSet.description | ValueSet.purpose |
-CodeSystem.title | CodeSystem.publisher | CodeSystem.description | CodeSystem.purpose |
-ConceptMap.title | ConceptMap.publisher | ConceptMap.description | ConceptMap.purpose |
-SearchParameter.title | SearchParameter.publisher | SearchParameter.description | SearchParameter.purpose |
-OperationDefinition.title | OperationDefinition.publisher | OperationDefinition.description | OperationDefinition.purpose |
-StructureDefinition.title | StructureDefinition.publisher | StructureDefinition.description | StructureDefinition.purpose |
-CapabilityStatement.title | CapabilityStatement.publisher | CapabilityStatement.description | CapabilityStatement.purpose')
+          values_found = resolve_path(resource, 'title')
           values = value.split(/(?<!\\),/).each { |str| str.gsub!('\,', ',') }
           match_found = values_found.any? { |value_in_resource| values.include? value_in_resource }
           assert match_found, "definition-text in Measure/#{resource.id} (#{values_found}) does not match definition-text requested (#{value})"
@@ -82,7 +73,7 @@ CapabilityStatement.title | CapabilityStatement.publisher | CapabilityStatement.
         search_params = {
           'url': get_value_for_search_param(resolve_element_from_path(@resource_found, 'url') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["url"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         validate_search_reply(versioned_resource_class('Measure'), reply, search_params)
@@ -105,7 +96,7 @@ CapabilityStatement.title | CapabilityStatement.publisher | CapabilityStatement.
         search_params = {
           'code': get_value_for_search_param(resolve_element_from_path(@resource_found, 'code') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         validate_search_reply(versioned_resource_class('Measure'), reply, search_params)
@@ -126,18 +117,9 @@ CapabilityStatement.title | CapabilityStatement.publisher | CapabilityStatement.
         end
 
         search_params = {
-          'definition-text': get_value_for_search_param(resolve_element_from_path(@resource_found, 'title | Measure.subtitle | Measure.publisher | Measure.description | Measure.purpose | Measure.usage |
-Measure.riskAdjustment | Measure.rateAggregation | Measure.clinicalRecommendationStatement | Measure.definition | Measure.guideance |
-Questionnaire.title | Questionnaire.publisher | Questionnaire.description | Questionnaire.purpose |
-ValueSet.title | ValueSet.publisher | ValueSet.description | ValueSet.purpose |
-CodeSystem.title | CodeSystem.publisher | CodeSystem.description | CodeSystem.purpose |
-ConceptMap.title | ConceptMap.publisher | ConceptMap.description | ConceptMap.purpose |
-SearchParameter.title | SearchParameter.publisher | SearchParameter.description | SearchParameter.purpose |
-OperationDefinition.title | OperationDefinition.publisher | OperationDefinition.description | OperationDefinition.purpose |
-StructureDefinition.title | StructureDefinition.publisher | StructureDefinition.description | StructureDefinition.purpose |
-CapabilityStatement.title | CapabilityStatement.publisher | CapabilityStatement.description | CapabilityStatement.purpose') { |el| get_value_for_search_param(el).present? })
+          'definition-text': get_value_for_search_param(resolve_element_from_path(@resource_found, 'title') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["definition-text"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
         validate_search_reply(versioned_resource_class('Measure'), reply, search_params)

@@ -330,7 +330,7 @@ module Inferno
           search_param_url = sequence[:search_param_descriptions][param][:url]
           search_param_path = search_param_url.slice(search_param_url.index('SearchParameter/')..-1)
           search_param_definition = @resource_by_path[search_param_path]
-          path = search_param_definition['expression']
+          path = search_param_definition['expression'].split('|').first.strip
           path = path.gsub(/.where\((.*)/, '')
           as_type = path.scan(/.as\((.*?)\)/).flatten.first
           path = path.gsub(/.as\((.*?)\)/, capitalize_first_letter(as_type)) if as_type.present?

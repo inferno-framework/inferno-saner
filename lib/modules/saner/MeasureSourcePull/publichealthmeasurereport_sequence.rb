@@ -94,7 +94,7 @@ module Inferno
         search_params = {
           '_id': get_value_for_search_param(resolve_element_from_path(@resource_found, 'id') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["_id"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -116,7 +116,7 @@ module Inferno
         search_params = {
           'date': get_value_for_search_param(resolve_element_from_path(@resource_found, 'date') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["date"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -138,7 +138,7 @@ module Inferno
         search_params = {
           'measure': get_value_for_search_param(resolve_element_from_path(@resource_found, 'measure') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["measure"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -160,7 +160,7 @@ module Inferno
         search_params = {
           'subject': get_value_for_search_param(resolve_element_from_path(@resource_found, 'subject') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["subject"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -182,7 +182,7 @@ module Inferno
         search_params = {
           'period': get_value_for_search_param(resolve_element_from_path(@resource_found, 'period') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["period"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -204,7 +204,7 @@ module Inferno
         search_params = {
           'reporter': get_value_for_search_param(resolve_element_from_path(@resource_found, 'reporter') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["reporter"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
@@ -227,7 +227,7 @@ module Inferno
         search_params = {
           'code': get_value_for_search_param(resolve_element_from_path(@resource_found, 'code') { |el| get_value_for_search_param(el).present? })
         }
-        skip if search_params.any? { |_param, value| value.nil? }
+        skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
         validate_search_reply(versioned_resource_class('MeasureReport'), reply, search_params)
