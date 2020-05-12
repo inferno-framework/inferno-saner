@@ -6,6 +6,7 @@ require_relative './search_test'
 require_relative './interaction_test'
 require_relative './read_test'
 require_relative './profile_validation_test'
+require_relative './create_test'
 
 module Inferno
   module Generator
@@ -52,6 +53,7 @@ module Inferno
             .each do |interaction|
             # specific edge cases
             interaction[:code] = 'history' if interaction[:code] == 'history-instance'
+            create_create_test(sequence) if interaction[:code] == 'create'
 
             create_interaction_test(sequence, interaction)
           end

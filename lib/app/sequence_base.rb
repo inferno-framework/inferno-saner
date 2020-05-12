@@ -559,6 +559,17 @@ module Inferno
         read_response
       end
 
+      def validate_create_reply(resource, klass, reply_handler = nil)
+        class_name klass.name.demodulize
+        create_response = @client.create(resource)
+
+        # Check that the create was a success (HTTP status code 201)
+        # https://www.hl7.org/fhir/http.html#summary
+        assert create_response.code == 201, "Bad response code: expected 201, but found #{response.code}"
+
+        assert create_response.headers[:location], "Expected Location Header"
+      end
+
       def validate_history_reply(resource, klass)
         assert !resource.nil?, "No #{klass.name.demodulize} resources available from search."
         id = resource.try(:id)
