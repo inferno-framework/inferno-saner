@@ -188,7 +188,7 @@ module Inferno
             (quantity_code.present? && quantity_code['fixedCode']) || (quantity_system.present? && quantity_system['fixedUri'])
           when 'code'
             e['fixedCode'].present?
-        end
+          end
         end
 
         sequence[:bindings] = elements_with_bindings.map do |e|
@@ -201,7 +201,7 @@ module Inferno
         end
         extensions = profile_elements.select { |e| e['type'].present? && e['type'].first['code'] == 'Extension' }
         extensions.each { |extension| add_terminology_bindings_from_extension(extension, sequence) }
-    end
+      end
 
       def add_terminology_bindings_from_extension(extension, sequence)
         profile = extension['type'].first['profile']
