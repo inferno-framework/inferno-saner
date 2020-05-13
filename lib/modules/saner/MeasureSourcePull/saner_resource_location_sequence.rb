@@ -99,7 +99,9 @@ module Inferno
         end
 
         resource_id = @instance.location_id
-        @resource_found = validate_read_reply(FHIR::Location.new(id: resource_id), FHIR::Location)
+        read_response = validate_read_reply(FHIR::Location.new(id: resource_id), FHIR::Location)
+        @resource_found = read_response.resource
+        @raw_resource_found = read_response.response[:body]
       end
 
       test :search_by__id do
@@ -405,7 +407,7 @@ module Inferno
 
         skip 'No resource found from Read test' unless @resource_found.present?
 
-        test_resource_against_profile('Location', @resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
+        test_resource_against_profile('Location', @raw_resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
       end
     end
   end

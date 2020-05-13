@@ -14,7 +14,7 @@ module Inferno
         search_test[:test_code] = %(
           skip 'No resource found from Read test' unless @resource_found.present?
 
-          test_resource_against_profile('#{sequence[:resource]}', @resource_found, '#{sequence[:profile]}')
+          test_resource_against_profile('#{sequence[:resource]}', @raw_resource_found, '#{sequence[:profile]}')
         )
         sequence[:tests] << search_test
       end
