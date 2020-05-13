@@ -53,9 +53,7 @@ module Inferno
             .each do |interaction|
             # specific edge cases
             interaction[:code] = 'history' if interaction[:code] == 'history-instance'
-            create_create_test(sequence) if interaction[:code] == 'create'
-
-            create_interaction_test(sequence, interaction)
+            create_create_test(sequence, interaction) if interaction[:code] == 'create'
           end
           create_profile_validation_test(sequence) if metadata[:capability_statement].include? 'Pull'
           # # create_must_support_test(sequence)

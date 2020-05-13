@@ -23,37 +23,13 @@ module Inferno
           name 'Server creates MeasureReport resource with the MeasureReport create interaction'
           link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
           description %(
-            This test will attempt to Reference to MeasureReport can be resolved and read.
+            A server SHALL support the MeasureReport create interaction.
           )
           versions :r4
         end
 
         resource = FHIR::MeasureReport.new
         @resource_created_response = validate_create_reply(resource, FHIR::MeasureReport)
-      end
-
-      test :create_interaction do
-        metadata do
-          id '02'
-          name 'Server returns correct MeasureReport resource from MeasureReport create interaction'
-          link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
-          description %(
-            A server SHALL support the MeasureReport create interaction.
-          )
-          versions :r4
-        end
-      end
-
-      test :update_interaction do
-        metadata do
-          id '03'
-          name 'Server returns correct MeasureReport resource from MeasureReport update interaction'
-          link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
-          description %(
-            A server SHALL support the MeasureReport update interaction.
-          )
-          versions :r4
-        end
       end
     end
   end
