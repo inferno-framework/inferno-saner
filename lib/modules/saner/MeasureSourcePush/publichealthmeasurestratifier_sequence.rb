@@ -32,6 +32,22 @@ module Inferno
         resource = FHIR::Measure.new
         @resource_created_response = validate_create_reply(resource, FHIR::Measure)
       end
+
+      test :resource_update do
+        metadata do
+          id '02'
+          name 'Server creates Measure resource with the Measure create interaction'
+          link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
+          optional
+          description %(
+            A server SHOULD support the Measure update interaction.
+          )
+          versions :r4
+        end
+
+        resource = FHIR::Measure.new
+        @resource_created_response = validate_update_reply(resource, FHIR::Measure)
+      end
     end
   end
 end
