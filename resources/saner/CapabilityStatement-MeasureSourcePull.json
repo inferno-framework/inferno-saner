@@ -171,6 +171,33 @@
               "definition": "http://hl7.org/fhir/SearchParameter/MeasureReport-reporter",
               "type": "reference"
             }
+          ],
+          "extension": [
+            {
+              "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+              "valueCode" : "SHALL"
+            },
+            {
+              "extension" : [
+                {
+                  "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation",
+                  "valueCode" : "MAY"
+                },
+                {
+                  "url" : "http://hl7.org/fhir/SearchParameter/MeasureReport-measure",
+                  "valueString" : "measure"
+                },
+                {
+                  "url" : "http://hl7.org/fhir/SearchParameter/MeasureReport-subject",
+                  "valueString" : "subject"
+                },
+                {
+                  "url" : "http://hl7.org/fhir/SearchParameter/MeasureReport-period",
+                  "valueString" : "period"
+                }
+              ],
+              "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination"
+            }
           ]
         },
         {
