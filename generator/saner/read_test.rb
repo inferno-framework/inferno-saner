@@ -9,7 +9,7 @@ module Inferno
           tests_that: "Server returns correct #{sequence[:resource]} resource from the #{sequence[:resource]} read interaction",
           key: test_key,
           index: sequence[:tests].length + 1,
-          link: 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html',
+          link: 'http://build.fhir.org/ig/AudaciousInquiry/fhir-saner/index.html',
           description: "This test will attempt to Reference to #{sequence[:resource]} can be resolved and read."
         }
         read_test[:test_code] = %(
