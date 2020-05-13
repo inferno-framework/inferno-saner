@@ -74,7 +74,8 @@ module Inferno
             slices: [],
             elements: []
           },
-          tests: []
+          tests: [],
+          requirements: []
         }
       end
 
@@ -98,12 +99,16 @@ module Inferno
             add_terminology_bindings(profile_definition, new_sequence)
             add_search_param_descriptions(profile_definition, new_sequence)
             add_references(profile_definition, new_sequence)
+            add_requirements(new_sequence)
 
             metadata[:sequences] << new_sequence
           end
         end
       end
 
+      def add_requirements(sequence)
+        sequence[:requirements] << ":#{sequence[:resource].downcase}_id" if sequence[:interactions].any? { |interaction| interaction[:code] == 'read'}
+      end
       def add_basic_searches(resource, sequence)
         basic_searches = resource['searchParam']
         basic_searches&.each do |search_param|

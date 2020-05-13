@@ -559,29 +559,28 @@ module Inferno
       end
 
       def validate_create_reply(resource, klass, reply_handler = nil)
-        class_name klass.name.demodulize
+        class_name = klass.name.demodulize
         create_response = @client.create(resource)
 
         # Check that the create was a success (HTTP status code 201)
         # https://www.hl7.org/fhir/http.html#summary
-        assert create_response.code == 201, "Bad response code: expected 201, but found #{response.code}"
-
-        assert create_response.headers[:location], 'Expected Location Header'
+        assert create_response.code == 201, "Bad response code: expected 201, but found #{create_response.code}"
+        assert create_response.response[:headers]['location'], "Expected Location Header, found #{create_response.response[:headers].keys}"
 
         reply_handler&.call(reply)
       end
 
       def validate_update_reply(resource, klass, reply_handler = nil)
-        class_name klass.name.demodulize
-        create_response = @client.update(resource)
+        class_name = klass.name.demodulize
+        update_response = @client.update(resource, resource.id)
 
         # Check that the create was a success (HTTP status code 201)
         # https://www.hl7.org/fhir/http.html#summary
-        assert_response_ok(create_response, "Bad response code: expected 201, but found #{response.code}")
+        assert_response_ok(update_response, "Bad response code: expected 201, but found #{update_response.code}")
 
-        if create_response.code == 200
-          assert create_response.headers[:last_modified], 'Expected Last-Modified Header'
-          assert create_response.headers[:etag], 'Expected ETag Header'
+        if update_response.code == 200
+          assert update_response.response[:headers]['last-modified'], "Expected last-modified header, found #{update_response.response[:headers].keys}"
+          assert update_response.response[:headers]['etag'], "Expected ETAG Header, found #{update_response.response[:headers].keys}"
         end
 
         reply_handler&.call(reply)
