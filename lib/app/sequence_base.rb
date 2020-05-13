@@ -572,6 +572,22 @@ module Inferno
         reply_handler&.call(reply)
       end
 
+      def validate_update_reply(resource, klass, reply_handler = nil)
+        class_name klass.name.demodulize
+        create_response = @client.update(resource)
+
+        # Check that the create was a success (HTTP status code 201)
+        # https://www.hl7.org/fhir/http.html#summary
+        assert_response_ok(create_response, "Bad response code: expected 201, but found #{response.code}")
+
+        if create_response.code == 200
+          assert create_response.headers[:last_modified], 'Expected Last-Modified Header'
+          assert create_response.headers[:etag], 'Expected ETag Header'
+        end
+
+        reply_handler&.call(reply)
+      end
+
       def validate_history_reply(resource, klass)
         assert !resource.nil?, "No #{klass.name.demodulize} resources available from search."
         id = resource.try(:id)
