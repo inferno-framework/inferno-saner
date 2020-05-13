@@ -77,6 +77,10 @@ module Inferno
         skip 'Could not find parameter value for ["url"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasure')
         validate_reply_entries(bundled_resources, search_params)
@@ -103,6 +107,10 @@ module Inferno
         skip 'Could not find parameter value for ["code"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasure')
         validate_reply_entries(bundled_resources, search_params)
@@ -129,6 +137,10 @@ module Inferno
         skip 'Could not find parameter value for ["definition-text"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Measure'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Measure'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasure')
         validate_reply_entries(bundled_resources, search_params)
