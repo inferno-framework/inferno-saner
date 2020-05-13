@@ -29,7 +29,7 @@ class SequenceValidationTest < MiniTest::Test
         test[:test_id].nil?
     end
 
-    empty = incomplete_metadata_tests.empty?
+    # empty = incomplete_metadata_tests.empty?
     # assert empty, "Found #{incomplete_metadata_tests.length} tests with incomplete metadata."\
     #   "First: #{!empty && incomplete_metadata_tests.first[:sequence]}: #{!empty && incomplete_metadata_tests.first[:name]}"
   end
