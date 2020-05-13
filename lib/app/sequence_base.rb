@@ -622,7 +622,7 @@ module Inferno
         @test_warnings.concat resource_validation_errors[:warnings]
         @information_messages.concat resource_validation_errors[:information]
 
-        errors.map! { |e| "#{resource_type}/#{resource.id}: #{e}" }
+        errors.map! { |e| "#{resource_type}/#{JSON.parse(resource)['id']}: #{e}" }
         @profiles_failed[profile.url].concat(errors) unless errors.empty?
         errors
       end
