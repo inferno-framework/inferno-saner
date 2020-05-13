@@ -319,6 +319,21 @@
               label: 'Bulk Client ID',
               value: instance.bulk_client_id}); %>
 
+          <%= erb(:prerequisite_field,{},{prerequisite: :measure_id,
+              instance: instance,
+              label: 'Measure ID',
+              value: instance.measure_id}); %>
+
+          <%= erb(:prerequisite_field,{},{prerequisite: :measurereport_id,
+              instance: instance,
+              label: 'Measure Report ID',
+              value: instance.measurereport_id}); %>
+
+          <%= erb(:prerequisite_field,{},{prerequisite: :location_id,
+              instance: instance,
+              label: 'Location ID',
+              value: instance.location_id}); %>
+
         <%# SPECIAL CASE: Bulk Requires Authorization%>
         <div class="form-group" data-requiredby="<%= test_set.variable_required_by(:bulk_requires_auth).map {|seq| seq.sequence_name}.join(',')%>" data-definedby="" data-prerequisite="bulk_requires_auth">
 
