@@ -11,7 +11,7 @@ test_sets:
         run_all: true
         sequences:
         - MeasureSourcePullPublicHealthMeasureReportSequence
-        - MeasureSourcePullsaner_resource_locationSequence
+        - MeasureConsumerPullSanerResourceLocationSequence
         - MeasureSourcePullPublicHealthMeasureSequence
         - MeasureSourcePullPublicHealthMeasureStratifierSequence
       - name: Measure Consumer Push SANER Profiles
@@ -20,4 +20,4 @@ test_sets:
         - MeasureConsumerPushPublicHealthMeasureReportSequence
         - MeasureConsumerPushPublicHealthMeasureSequence
         - MeasureConsumerPushPublicHealthMeasureStratifierSequence
-        - MeasureConsumerPushsaner_resource_locationSequence
+        - MeasureConsumerPullSanerResourceLocationSequence
