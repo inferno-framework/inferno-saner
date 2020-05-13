@@ -53,7 +53,9 @@ module Inferno
         end
 
         resource_id = @instance.measure_id
-        @resource_found = validate_read_reply(FHIR::Measure.new(id: resource_id), FHIR::Measure)
+        read_response = validate_read_reply(FHIR::Measure.new(id: resource_id), FHIR::Measure)
+        @resource_found = read_response.resource
+        @raw_resource_found = read_response.response[:body]
       end
 
       test :search_by_url do
@@ -159,7 +161,7 @@ module Inferno
 
         skip 'No resource found from Read test' unless @resource_found.present?
 
-        test_resource_against_profile('Measure', @resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureStratifier')
+        test_resource_against_profile('Measure', @raw_resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureStratifier')
       end
     end
   end

@@ -14,8 +14,10 @@ module Inferno
         }
         read_test[:test_code] = %(
             resource_id = @instance.#{sequence[:resource].downcase}_id
-            @resource_found = validate_read_reply(FHIR::#{sequence[:resource]}.new(id: resource_id), FHIR::#{sequence[:resource]})
-          )
+            read_response = validate_read_reply(FHIR::#{sequence[:resource]}.new(id: resource_id), FHIR::#{sequence[:resource]})
+            @resource_found = read_response.resource
+            @raw_resource_found = read_response.response[:body]
+        )
         sequence[:tests] << read_test
       end
     end
