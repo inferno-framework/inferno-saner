@@ -27,8 +27,6 @@ module Inferno
       end
     end
 
-
-
     private
 
     def validate_json_against_profile(resource, fhir_models_klass, profile)
@@ -39,9 +37,9 @@ module Inferno
       warnings = issues_by_severity(outcome.issue, 'warning')
       information = issues_by_severity(outcome.issue, 'information')
       {
-          errors: fatals.concat(errors).reject(&:empty?),
-          warnings: warnings,
-          information: information
+        errors: fatals.concat(errors).reject(&:empty?),
+        warnings: warnings,
+        information: information
       }
     end
 
