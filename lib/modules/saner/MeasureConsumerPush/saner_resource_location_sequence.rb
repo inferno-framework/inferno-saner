@@ -17,9 +17,24 @@ module Inferno
 
       @resource_found = nil
 
-      test :create_interaction do
+      test :resource_create do
         metadata do
           id '01'
+          name 'Server creates Location resource with the Location create interaction'
+          link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
+          description %(
+            This test will attempt to Reference to Location can be resolved and read.
+          )
+          versions :r4
+        end
+
+        resource = FHIR::Location.new
+        @resource_created_response = validate_create_reply(resource, FHIR::Location)
+      end
+
+      test :create_interaction do
+        metadata do
+          id '02'
           name 'Server returns correct Location resource from Location create interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
@@ -32,7 +47,7 @@ module Inferno
 
       test :update_interaction do
         metadata do
-          id '02'
+          id '03'
           name 'Server returns correct Location resource from Location update interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
