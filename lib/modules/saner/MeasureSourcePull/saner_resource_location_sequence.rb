@@ -395,7 +395,7 @@ module Inferno
       test :validate_resources do
         metadata do
           id '12'
-          name 'Location resources returned from previous search conform to the Resource Location Profile.'
+          name 'The Location resource returned from the first Read test is valid according to the profile http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location.'
           link ''
           description %(
 
@@ -403,7 +403,9 @@ module Inferno
           versions :r4
         end
 
-        test_resources_against_profile('Location', 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
+        skip 'No resource found from Read test' unless @resource_found.present?
+
+        test_resource_against_profile('Location', @resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
       end
     end
   end

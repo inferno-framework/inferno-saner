@@ -285,7 +285,7 @@ module Inferno
       test :validate_resources do
         metadata do
           id '09'
-          name 'MeasureReport resources returned from previous search conform to the Saner Public Health Measure Report.'
+          name 'The MeasureReport resource returned from the first Read test is valid according to the profile http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport.'
           link ''
           description %(
 
@@ -293,7 +293,9 @@ module Inferno
           versions :r4
         end
 
-        test_resources_against_profile('MeasureReport', 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
+        skip 'No resource found from Read test' unless @resource_found.present?
+
+        test_resource_against_profile('MeasureReport', @resource_found, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
       end
     end
   end
