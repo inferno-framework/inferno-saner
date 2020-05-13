@@ -7,6 +7,7 @@ require_relative './interaction_test'
 require_relative './read_test'
 require_relative './profile_validation_test'
 require_relative './create_test'
+require_relative './update_test'
 
 module Inferno
   module Generator
@@ -54,6 +55,7 @@ module Inferno
             # specific edge cases
             interaction[:code] = 'history' if interaction[:code] == 'history-instance'
             create_create_test(sequence, interaction) if interaction[:code] == 'create'
+            create_update_test(sequence, interaction) if interaction[:code] == 'update'
           end
           create_profile_validation_test(sequence) if metadata[:capability_statement].include? 'Pull'
           # # create_must_support_test(sequence)

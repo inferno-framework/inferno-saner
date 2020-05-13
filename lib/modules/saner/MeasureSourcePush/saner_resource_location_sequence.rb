@@ -32,6 +32,22 @@ module Inferno
         resource = FHIR::Location.new
         @resource_created_response = validate_create_reply(resource, FHIR::Location)
       end
+
+      test :resource_update do
+        metadata do
+          id '02'
+          name 'Server creates Location resource with the Location create interaction'
+          link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
+          optional
+          description %(
+            A server SHOULD support the Location update interaction.
+          )
+          versions :r4
+        end
+
+        resource = FHIR::Location.new
+        @resource_created_response = validate_update_reply(resource, FHIR::Location)
+      end
     end
   end
 end

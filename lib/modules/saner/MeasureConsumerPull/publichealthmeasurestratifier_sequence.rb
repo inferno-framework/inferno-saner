@@ -45,7 +45,7 @@ module Inferno
         metadata do
           id '01'
           name 'Server returns correct Measure resource from the Measure read interaction'
-          link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
+          link 'http://build.fhir.org/ig/AudaciousInquiry/fhir-saner/index.html'
           description %(
             This test will attempt to Reference to Measure can be resolved and read.
           )

@@ -7,17 +7,17 @@ test_sets:
   ad_hoc_testing:
     view: default
     tests:
-      - name: Measure Source Pull SANER Profiles
+      - name: Measure Source Pull (Server)
         run_all: true
         sequences:
         - MeasureSourcePullPublicHealthMeasureReportSequence
         - MeasureConsumerPullSanerResourceLocationSequence
         - MeasureSourcePullPublicHealthMeasureSequence
         - MeasureSourcePullPublicHealthMeasureStratifierSequence
-      - name: Measure Consumer Push SANER Profiles
+      - name: Measure Consumer Push (Server)
         run_all: true
         sequences:
         - MeasureConsumerPushPublicHealthMeasureReportSequence
         - MeasureConsumerPushPublicHealthMeasureSequence
         - MeasureConsumerPushPublicHealthMeasureStratifierSequence
-        - MeasureConsumerPullSanerResourceLocationSequence
+        - MeasureConsumerPushSanerResourceLocationSequence

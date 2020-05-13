@@ -11,7 +11,7 @@ module Inferno
           tests_that: "Server returns correct #{sequence[:resource]} resource from #{sequence[:resource]} #{interaction[:code]} interaction",
           key: test_key,
           index: sequence[:tests].length + 1,
-          link: 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html',
+          link: 'http://build.fhir.org/ig/AudaciousInquiry/fhir-saner/index.html',
           description: "A server #{interaction[:expectation]} support the #{sequence[:resource]} #{interaction[:code]} interaction.",
           optional: interaction[:expectation] != 'SHALL'
         }
