@@ -8,14 +8,14 @@ module Inferno
           capability_statement: id,
           name: @path,
           title: "SANER #{id} Module",
-          description: "SANER #{id} Module",
+          description: "SANER #{id} Module"
         }
 
         capability_statement_json = capability_statement_by_id(id)
         add_metadata_from_resources(metadata, capability_statement_json['rest'][0]['resource'])
         metadata
       end
-  
+
       def generate_unique_test_id_prefix(title)
         module_prefix = ''
         test_id_prefix = module_prefix + title.chars.select { |c| c.upcase == c && c != ' ' }.join
@@ -33,7 +33,7 @@ module Inferno
 
         test_id_prefix
       end
-  
+
       def get_base_path(profile)
         if profile.include? 'us/saner/'
           profile.split('us/saner/').last
@@ -41,7 +41,7 @@ module Inferno
           profile.split('fhir/').last
         end
       end
-  
+
       def build_new_sequence(resource, profile, capability_statement)
         base_path = get_base_path(profile)
         base_name = profile.split('StructureDefinition/').last.gsub('-', '_')
@@ -70,7 +70,7 @@ module Inferno
           tests: []
         }
       end
-  
+
       def add_metadata_from_resources(metadata, resources)
         metadata[:sequences] = []
 
@@ -96,100 +96,100 @@ module Inferno
           end
         end
       end
-  
-        def add_basic_searches(resource, sequence)
-          basic_searches = resource['searchParam']
-          basic_searches&.each do |search_param|
-            new_search_param = {
-              names: [search_param['name']],
-              expectation: search_param['extension'][0]['valueCode']
-            }
-            sequence[:searches] << new_search_param
-            sequence[:search_param_descriptions][search_param['name'].to_sym] = { url: search_param['definition'] }
-          end
+
+      def add_basic_searches(resource, sequence)
+        basic_searches = resource['searchParam']
+        basic_searches&.each do |search_param|
+          new_search_param = {
+            names: [search_param['name']],
+            expectation: search_param['extension'][0]['valueCode']
+          }
+          sequence[:searches] << new_search_param
+          sequence[:search_param_descriptions][search_param['name'].to_sym] = { url: search_param['definition'] }
         end
-  
-        def add_combo_searches(resource, sequence)
-          search_combos = resource['extension'] || []
-          search_combo_url = 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination'
-          search_combos
-            .select { |combo| combo['url'] == search_combo_url }
-            .each do |combo|
-              combo_params = combo['extension']
-              new_search_combo = {
-                expectation: combo_params[0]['valueCode'],
-                names: []
-              }
-              combo_params.each do |param|
-                next unless param.key?('valueString')
-  
-                new_search_combo[:names] << param['valueString']
-                sequence[:search_param_descriptions][param['valueString'].to_sym] = {}
-              end
-              sequence[:searches] << new_search_combo
+      end
+
+      def add_combo_searches(resource, sequence)
+        search_combos = resource['extension'] || []
+        search_combo_url = 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination'
+        search_combos
+          .select { |combo| combo['url'] == search_combo_url }
+          .each do |combo|
+            combo_params = combo['extension']
+            new_search_combo = {
+              expectation: combo_params[0]['valueCode'],
+              names: []
+            }
+            combo_params.each do |param|
+              next unless param.key?('valueString')
+
+              new_search_combo[:names] << param['valueString']
+              sequence[:search_param_descriptions][param['valueString'].to_sym] = {}
             end
-        end
-  
-        def add_interactions(resource, sequence)
-          interactions = resource['interaction']
-          interactions&.each do |interaction|
-            new_interaction = {
-              code: interaction['code'],
-              expectation: interaction['extension'][0]['valueCode']
-            }
-            sequence[:interactions] << new_interaction
+            sequence[:searches] << new_search_combo
           end
+      end
+
+      def add_interactions(resource, sequence)
+        interactions = resource['interaction']
+        interactions&.each do |interaction|
+          new_interaction = {
+            code: interaction['code'],
+            expectation: interaction['extension'][0]['valueCode']
+          }
+          sequence[:interactions] << new_interaction
         end
-  
-        def add_operations(resource, sequence)
-          operations = resource['operation']
-          operations&.each do |operation|
-            new_operation = {
-              operation: operation['name'],
-              expectation: operation['extension'][0]['valueCode']
-            }
-            sequence[:operations] << new_operation
-          end
+      end
+
+      def add_operations(resource, sequence)
+        operations = resource['operation']
+        operations&.each do |operation|
+          new_operation = {
+            operation: operation['name'],
+            expectation: operation['extension'][0]['valueCode']
+          }
+          sequence[:operations] << new_operation
         end
-  
-        def add_include_search(resource, sequence)
-          sequence[:include_params] = resource['searchInclude'] || []
+      end
+
+      def add_include_search(resource, sequence)
+        sequence[:include_params] = resource['searchInclude'] || []
+      end
+
+      def add_revinclude_targets(resource, sequence)
+        sequence[:revincludes] = resource['searchRevInclude'] || []
+      end
+
+      def add_required_codeable_concepts(profile_definition, sequence)
+        required_concepts = profile_definition['snapshot']['element']
+          .select { |element| element['type']&.any? { |type| type['code'] == 'CodeableConcept' } }
+          .select { |e| e.dig('binding', 'strength') == 'required' }
+
+        # The base FHIR vital signs profile has a required binding that isn't
+        # relevant for any of its child profiles
+        return if sequence[:resource] == 'Observation'
+
+        sequence[:required_concepts] = required_concepts.map do |concept|
+          concept['path']
+            .gsub("#{sequence[:resource]}.", '')
+            .gsub('[x]', 'CodeableConcept')
         end
-  
-        def add_revinclude_targets(resource, sequence)
-          sequence[:revincludes] = resource['searchRevInclude'] || []
+      end
+
+      def add_terminology_bindings(profile_definition, sequence)
+        profile_elements = profile_definition['snapshot']['element']
+        elements_with_bindings = profile_elements
+          .select { |e| e['binding'].present? }
+          .reject do |e|
+          case e['type'].first['code']
+          when 'Quantity'
+            quantity_code = profile_elements.find { |el| el['path'] == e['path'] + '.code' }
+            quantity_system = profile_elements.find { |el| el['path'] == e['path'] + '.system' }
+            (quantity_code.present? && quantity_code['fixedCode']) || (quantity_system.present? && quantity_system['fixedUri'])
+          when 'code'
+            e['fixedCode'].present?
         end
-  
-        def add_required_codeable_concepts(profile_definition, sequence)
-          required_concepts = profile_definition['snapshot']['element']
-            .select { |element| element['type']&.any? { |type| type['code'] == 'CodeableConcept' } }
-            .select { |e| e.dig('binding', 'strength') == 'required' }
-  
-          # The base FHIR vital signs profile has a required binding that isn't
-          # relevant for any of its child profiles
-          return if sequence[:resource] == 'Observation'
-  
-          sequence[:required_concepts] = required_concepts.map do |concept|
-            concept['path']
-              .gsub("#{sequence[:resource]}.", '')
-              .gsub('[x]', 'CodeableConcept')
-          end
         end
-  
-        def add_terminology_bindings(profile_definition, sequence)
-          profile_elements = profile_definition['snapshot']['element']
-          elements_with_bindings = profile_elements
-            .select { |e| e['binding'].present? }
-            .reject do |e|
-              case e['type'].first['code']
-              when 'Quantity'
-              quantity_code = profile_elements.find { |el| el['path'] == e['path'] + '.code' }
-              quantity_system = profile_elements.find { |el| el['path'] == e['path'] + '.system' }
-              (quantity_code.present? && quantity_code['fixedCode']) || (quantity_system.present? && quantity_system['fixedUri'])
-            when 'code'
-              e['fixedCode'].present?
-            end
-          end
 
         sequence[:bindings] = elements_with_bindings.map do |e|
           {
@@ -201,7 +201,7 @@ module Inferno
         end
         extensions = profile_elements.select { |e| e['type'].present? && e['type'].first['code'] == 'Extension' }
         extensions.each { |extension| add_terminology_bindings_from_extension(extension, sequence) }
-      end
+    end
 
       def add_terminology_bindings_from_extension(extension, sequence)
         profile = extension['type'].first['profile']
@@ -330,7 +330,7 @@ module Inferno
           search_param_url = sequence[:search_param_descriptions][param][:url]
           search_param_path = search_param_url.slice(search_param_url.index('SearchParameter/')..-1)
           search_param_definition = @resource_by_path[search_param_path]
-          path = search_param_definition['expression'].split('|').map(&:strip).find {|expression| [sequence[:resource], 'Resource'].include? expression.split('.').first}
+          path = search_param_definition['expression'].split('|').map(&:strip).find { |expression| [sequence[:resource], 'Resource'].include? expression.split('.').first }
           path = path.gsub(/.where\((.*)/, '')
           as_type = path.scan(/.as\((.*?)\)/).flatten.first
           path = path.gsub(/.as\((.*?)\)/, capitalize_first_letter(as_type)) if as_type.present?

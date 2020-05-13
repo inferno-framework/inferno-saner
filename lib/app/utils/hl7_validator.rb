@@ -34,7 +34,7 @@ module Inferno
 
     def issues_by_severity(issues, severity)
       issues.select { |i| i.severity == severity }
-          .map { |iss| "#{issue_location(iss)}: #{iss&.details&.text}" }
+        .map { |iss| "#{issue_location(iss)}: #{iss&.details&.text}" }
     end
 
     def issue_location(issue)

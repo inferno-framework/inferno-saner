@@ -11,7 +11,10 @@ module Inferno
   module Generator
     class SanerGenerator < Generator::Base
       include CapabilityStatementParser
-      include SearchTest, InteractionTest, ReadTest, ProfileValidationTest
+      include ProfileValidationTest
+      include ReadTest
+      include InteractionTest
+      include SearchTest
       def generate
         generate_sequences('MeasureConsumerPull')
         generate_sequences('MeasureConsumerPush')
@@ -24,7 +27,7 @@ module Inferno
         generate_tests(metadata)
         generate_search_validators(metadata)
         metadata[:sequences].each do |sequence|
-          generate_sequence(sequence,  metadata[:capability_statement])
+          generate_sequence(sequence, metadata[:capability_statement])
         end
       end
 
