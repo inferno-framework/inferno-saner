@@ -567,7 +567,7 @@ module Inferno
         # https://www.hl7.org/fhir/http.html#summary
         assert create_response.code == 201, "Bad response code: expected 201, but found #{response.code}"
 
-        assert create_response.headers[:location], "Expected Location Header"
+        assert create_response.headers[:location], 'Expected Location Header'
       end
 
       def validate_history_reply(resource, klass)
