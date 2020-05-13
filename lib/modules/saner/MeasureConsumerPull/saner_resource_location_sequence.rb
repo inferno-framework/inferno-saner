@@ -122,6 +122,10 @@ module Inferno
         skip 'Could not find parameter value for ["_id"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -147,6 +151,10 @@ module Inferno
         skip 'Could not find parameter value for ["_lastUpdated"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -172,6 +180,10 @@ module Inferno
         skip 'Could not find parameter value for ["name"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -197,6 +209,10 @@ module Inferno
         skip 'Could not find parameter value for ["identifier"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -222,6 +238,10 @@ module Inferno
         skip 'Could not find parameter value for ["address"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -247,6 +267,10 @@ module Inferno
         skip 'Could not find parameter value for ["address-city"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -272,6 +296,10 @@ module Inferno
         skip 'Could not find parameter value for ["address-country"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -297,6 +325,10 @@ module Inferno
         skip 'Could not find parameter value for ["address-postalcode"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -322,6 +354,10 @@ module Inferno
         skip 'Could not find parameter value for ["address-state"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
@@ -347,6 +383,10 @@ module Inferno
         skip 'Could not find parameter value for ["address-use"] to search by.' if search_params.any? { |_param, value| value.nil? }
 
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
         bundled_resources = fetch_all_bundled_resources(reply)
         save_resource_references(versioned_resource_class('Location'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/saner-resource-location')
         validate_reply_entries(bundled_resources, search_params)
