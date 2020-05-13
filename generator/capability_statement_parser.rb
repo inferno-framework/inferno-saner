@@ -42,13 +42,20 @@ module Inferno
         end
       end
 
+      def format_base_name(base_name)
+        base_name
+          .split('_')
+          .map { |string_part| capitalize_first_letter(string_part) }
+          .join
+      end
+
       def build_new_sequence(resource, profile, capability_statement)
         base_path = get_base_path(profile)
         base_name = profile.split('StructureDefinition/').last.gsub('-', '_')
         profile_json = @resource_by_path[base_path]
         profile_title = profile_json['title'].strip
         test_id_prefix = generate_unique_test_id_prefix(profile_title)
-        class_name = "#{capability_statement}#{base_name}Sequence"
+        class_name = "#{capability_statement}#{format_base_name(base_name)}Sequence"
         {
           name: base_name.tr('-', '_'),
           class_name: class_name,

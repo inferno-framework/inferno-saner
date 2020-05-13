@@ -2,7 +2,7 @@
 
 module Inferno
   module Sequence
-    class MeasureConsumerPullsaner_resource_locationSequence < SequenceBase
+    class MeasureConsumerPullSanerResourceLocationSequence < SequenceBase
       title 'Resource Location Profile Tests'
 
       description 'Verify support for the server capabilities required by the Resource Location Profile.'
