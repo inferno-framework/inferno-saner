@@ -6,13 +6,15 @@ module Inferno
       def create_profile_validation_test(sequence)
         test_key = :validate_resources
         search_test = {
-          tests_that: "#{sequence[:resource]} resources returned from previous search conform to the #{sequence[:profile_name]}.",
+          tests_that: "The #{sequence[:resource]} resource returned from the first Read test is valid according to the profile #{sequence[:profile]}.",
           key: test_key,
           index: sequence[:tests].length + 1,
           description: %()
         }
         search_test[:test_code] = %(
-          test_resources_against_profile('#{sequence[:resource]}', '#{sequence[:profile]}')
+          skip 'No resource found from Read test' unless @resource_found.present?
+
+          test_resource_against_profile('#{sequence[:resource]}', @resource_found, '#{sequence[:profile]}')
         )
         sequence[:tests] << search_test
       end

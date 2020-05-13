@@ -675,6 +675,22 @@ module Inferno
         assert(errors.empty?, errors.join("<br/>\n"))
       end
 
+      def test_resource_against_profile(resource_type, resource, specified_profile)
+        @profiles_encountered ||= Set.new
+        @profiles_failed ||= Hash.new { |hash, key| hash[key] = [] }
+        return test_resources(resource_type) if specified_profile.blank?
+
+        profile = Inferno::ValidationUtil::DEFINITIONS[specified_profile]
+        skip_if(
+          profile.blank?,
+          "Skip profile validation since profile #{specified_profile} is unknown."
+        )
+
+        error = validate_resource(resource_type, resource, profile)
+
+        assert(error.blank?, error)
+      end
+
       def test_resources_against_profile(resource_type, specified_profile = nil, &block)
         @profiles_encountered ||= Set.new
         @profiles_failed ||= Hash.new { |hash, key| hash[key] = [] }
