@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Inferno
   module Generator
     module SearchTest
@@ -41,11 +42,11 @@ module Inferno
         search_parameters.each_with_object({}) do |param, params|
           search_param_description = sequence[:search_param_descriptions][param.to_sym]
           params[param] =
-              "get_value_for_search_param(#{resolve_element_path(search_param_description, sequence[:delayed_sequence])} { |el| get_value_for_search_param(el).present? })"
+            "get_value_for_search_param(#{resolve_element_path(search_param_description, sequence[:delayed_sequence])} { |el| get_value_for_search_param(el).present? })"
         end
       end
 
-      def resolve_element_path(search_param_description, delayed_sequence)
+      def resolve_element_path(search_param_description, _delayed_sequence)
         element_path = search_param_description[:path].gsub(/(?<!\w)class(?!\w)/, 'local_class')
         path_parts = element_path.split('.')
         path_parts.shift
