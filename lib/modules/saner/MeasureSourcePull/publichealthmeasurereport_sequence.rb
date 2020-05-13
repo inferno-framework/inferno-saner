@@ -282,9 +282,41 @@ module Inferno
         validate_reply_entries(bundled_resources, search_params)
       end
 
-      test :validate_resources do
+      test :search_by_measure_subject_period do
         metadata do
           id '09'
+          name 'Server returns valid results for MeasureReport search by measure+subject+period.'
+          link ''
+          optional
+          description %(
+
+            A server MAY support searching by measure+subject+period on the MeasureReport resource.
+            This test will pass if resources are returned and match the search criteria.
+
+          )
+          versions :r4
+        end
+
+        search_params = {
+          'measure': get_value_for_search_param(resolve_element_from_path(@resource_found, 'measure') { |el| get_value_for_search_param(el).present? }),
+          'subject': get_value_for_search_param(resolve_element_from_path(@resource_found, 'subject') { |el| get_value_for_search_param(el).present? }),
+          'period': get_value_for_search_param(resolve_element_from_path(@resource_found, 'period') { |el| get_value_for_search_param(el).present? })
+        }
+        skip 'Could not find parameter value for ["measure", "subject", "period"] to search by.' if search_params.any? { |_param, value| value.nil? }
+
+        reply = get_resource_by_params(versioned_resource_class('MeasureReport'), search_params)
+
+        assert_response_ok(reply)
+        assert_bundle_response(reply)
+
+        bundled_resources = fetch_all_bundled_resources(reply)
+        save_resource_references(versioned_resource_class('MeasureReport'), bundled_resources, 'http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport')
+        validate_reply_entries(bundled_resources, search_params)
+      end
+
+      test :validate_resources do
+        metadata do
+          id '10'
           name 'The MeasureReport resource returned from the first Read test is valid according to the profile http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport.'
           link ''
           description %(

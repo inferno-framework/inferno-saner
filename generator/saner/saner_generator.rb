@@ -47,6 +47,10 @@ module Inferno
             .select { |search_param| search_param[:expectation] == 'SHOULD' }
             .each { |search_param| create_search_test(sequence, search_param) }
 
+          sequence[:searches]
+            .select { |search_param| search_param[:expectation] == 'MAY' }
+            .each { |search_param| create_search_test(sequence, search_param) }
+
           # make tests for each SHALL and SHOULD interaction
           sequence[:interactions]
             .select { |interaction| ['SHALL', 'SHOULD'].include? interaction[:expectation] }

@@ -131,7 +131,7 @@ module Inferno
               next unless param.key?('valueString')
 
               new_search_combo[:names] << param['valueString']
-              sequence[:search_param_descriptions][param['valueString'].to_sym] = {}
+              sequence[:search_param_descriptions][param['valueString'].to_sym] = { url: param['url'] }
             end
             sequence[:searches] << new_search_combo
           end
