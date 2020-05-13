@@ -17,9 +17,24 @@ module Inferno
 
       @resource_found = nil
 
-      test :create_interaction do
+      test :resource_create do
         metadata do
           id '01'
+          name 'Server creates Measure resource with the Measure create interaction'
+          link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
+          description %(
+            This test will attempt to Reference to Measure can be resolved and read.
+          )
+          versions :r4
+        end
+
+        resource = FHIR::Measure.new
+        @resource_created_response = validate_create_reply(resource, FHIR::Measure)
+      end
+
+      test :create_interaction do
+        metadata do
+          id '02'
           name 'Server returns correct Measure resource from Measure create interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
@@ -32,7 +47,7 @@ module Inferno
 
       test :update_interaction do
         metadata do
-          id '02'
+          id '03'
           name 'Server returns correct Measure resource from Measure update interaction'
           link 'https://www.hl7.org/fhir/us/core/CapabilityStatement-us-core-server.html'
           optional
