@@ -558,8 +558,7 @@ module Inferno
         read_response
       end
 
-      def validate_create_reply(resource, klass, reply_handler = nil)
-        class_name = klass.name.demodulize
+      def validate_create_reply(resource, reply_handler = nil)
         create_response = @client.create(resource)
 
         # Check that the create was a success (HTTP status code 201)
@@ -570,8 +569,7 @@ module Inferno
         reply_handler&.call(reply)
       end
 
-      def validate_update_reply(resource, klass, reply_handler = nil)
-        class_name = klass.name.demodulize
+      def validate_update_reply(resource, reply_handler = nil)
         update_response = @client.update(resource, resource.id)
 
         # Check that the create was a success (HTTP status code 201)

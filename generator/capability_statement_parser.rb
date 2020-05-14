@@ -107,8 +107,9 @@ module Inferno
       end
 
       def add_requirements(sequence)
-        sequence[:requirements] << ":#{sequence[:resource].downcase}_id" if sequence[:interactions].any? { |interaction| interaction[:code] == 'read'}
+        sequence[:requirements] << ":#{sequence[:resource].downcase}_id" if sequence[:interactions].any? { |interaction| interaction[:code] == 'read' }
       end
+
       def add_basic_searches(resource, sequence)
         basic_searches = resource['searchParam']
         basic_searches&.each do |search_param|
