@@ -29,7 +29,7 @@ module Inferno
       json = File.read(definition)
       version = VERSION_MAP[JSON.parse(json)['fhirVersion']]
       resource = get_resource(json, version)
-      next if resource.id == 'searchParams'
+      next unless resource.respond_to? :url
 
       DEFINITIONS[resource.url] = resource
       if resource.resourceType == 'StructureDefinition'

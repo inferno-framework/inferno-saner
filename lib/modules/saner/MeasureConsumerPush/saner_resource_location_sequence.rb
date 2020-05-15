@@ -12,7 +12,7 @@ module Inferno
 
       test_id_prefix 'RLPR'
 
-      requires :location_id
+      requires
       conformance_supports :Location
 
       @resource_found = nil
@@ -29,14 +29,15 @@ module Inferno
           versions :r4
         end
 
-        resource = FHIR::Location.new
+        location_example = File.read(File.expand_path('./resources/saner/saner-location-example.json'))
+        resource = FHIR.from_contents(location_example)
         @resource_created_response = validate_create_reply(resource, FHIR::Location)
       end
 
       test :resource_update do
         metadata do
           id '02'
-          name 'Server creates Location resource with the Location create interaction'
+          name 'Server updates Location resource with the Location update interaction'
           link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
           optional
           description %(
@@ -45,8 +46,9 @@ module Inferno
           versions :r4
         end
 
-        resource = FHIR::Location.new
-        @resource_created_response = validate_update_reply(resource, FHIR::Location)
+        location_example = File.read(File.expand_path('./resources/saner/saner-location-example.json'))
+        resource = FHIR.from_contents(location_example)
+        @resource_updated_response = validate_update_reply(resource, FHIR::Location)
       end
     end
   end

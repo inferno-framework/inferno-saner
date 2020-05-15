@@ -1,0 +1,179 @@
+{
+  "resourceType": "MeasureReport",
+  "id": "FHIR-101",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/saner/StructureDefinition/PublicHealthMeasureReport"
+    ],
+    "security": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+        "code": "HTEST",
+        "display": "test health data"
+      }
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: FHIR-101</p><p><b>meta</b>: </p><p><b>status</b>: complete</p><p><b>type</b>: summary</p><p><b>measure</b>: <a href=\"http://hl7.org/fhir/us/saner/FEMADailyHospitalCOVID19Reporting\">http://hl7.org/fhir/us/saner/FEMADailyHospitalCOVID19Reporting</a></p><p><b>subject</b>: <a href=\"Location-Loc-X410011.html\">Generated Summary: id: Loc-X410011; status: active; mode: instance; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/location-physical-type si}\">Site</span></a></p><p><b>date</b>: May 8, 2020, 5:00:00 AM</p><p><b>reporter</b>: <a href=\"Organization-X410011.html\">NORTH COUNTY HOSPITAL. Generated Summary: id: X410011; X410011; active; <span title=\"Codes: {http://terminology.hl7.org/CodeSystem/organization-type prov}\">Healthcare Provider</span>; name: NORTH COUNTY HOSPITAL</a></p><p><b>period</b>: May 8, 2020, 12:00:00 AM --&gt; May 8, 2020, 12:00:00 AM</p><blockquote><p><b>group</b></p><p><b>code</b>: # of new positive test results released / # of total new tests released for previous date queried <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasureGroupSystem code 'positiveIncreasePercent' = 'Percent Positive among Newly Resulted Tests', given as 'Percent Positive among Newly Resulted Tests'})</span></p><blockquote><p><b>population</b></p><p><b>code</b>: Midnight to midnight cutoff, tests ordered on previous date queried. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'totalOrdersIncrease' = 'New Diagnostic Tests Ordered/Received', given as 'New Diagnostic Tests Ordered/Received'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'initial-population' = 'Initial Population', given as 'Initial Population'})</span></p><p><b>count</b>: 66</p></blockquote><blockquote><p><b>population</b></p><p><b>code</b>: Midnight to midnight cutoff, test results released on previous date queried. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'totalTestResultsIncrease' = 'New Tests Resulted', given as 'New Tests Resulted'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'denominator' = 'Denominator)</span></p><p><b>count</b>: 88</p></blockquote><blockquote><p><b>population</b></p><p><b>code</b>: Midnight to midnight cutoff, positive test results released on the previous date queried. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'positiveIncrease' = 'New Positive COVID-19 Tests', given as 'New Positive COVID-19 Tests'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'numerator' = 'Numerator)</span></p><p><b>count</b>: 16</p></blockquote><p><b>measureScore</b>: 0.5</p></blockquote><blockquote><p><b>group</b></p><p><b>code</b>: # of total positive results to released date / # of total tests results released to date <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasureGroupSystem code 'positivePercent' = 'Cumulative Percent Positive among Resulted Tests', given as 'Cumulative Percent Positive among Newly Resulted Tests'})</span></p><blockquote><p><b>population</b></p><p><b>code</b>: All tests ordered to date. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'totalOrders' = 'Cumulative Diagnostic Tests Ordered/Received', given as 'Cumulative Diagnostic Tests Ordered/Received'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'initial-population' = 'Initial Population', given as 'Initial Population'})</span></p><p><b>count</b>: 66</p></blockquote><blockquote><p><b>population</b></p><p><b>code</b>: All tests with results released to date. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'totalTestResults' = 'Cumulative Tests Performed', given as 'Cumulative Tests Performed'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'denominator' = 'Denominator)</span></p><p><b>count</b>: 65</p></blockquote><blockquote><p><b>population</b></p><p><b>code</b>: All positive test results released to date. <span style=\"background: LightGoldenRodYellow\">(Details : {http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem code 'positive' = 'Cumulative Positive COVID-19 Tests', given as 'Cumulative Positive COVID-19 Tests'}; {http://terminology.hl7.org/CodeSystem/measure-population code 'numerator' = 'Numerator)</span></p><p><b>count</b>: 16</p></blockquote><p><b>measureScore</b>: 0.5</p></blockquote></div>"
+  },
+  "status": "complete",
+  "type": "summary",
+  "measure": "http://hl7.org/fhir/us/saner/FEMADailyHospitalCOVID19Reporting",
+  "subject": {
+    "reference": "Location/Loc-X410011",
+    "identifier": {
+      "system": "http://build.fhir.org/ig/AudaciousInquiry/saner-ig/connectathon/locations",
+      "value": "X410011"
+    }
+  },
+  "date": "2020-05-08T00:00:00-05:00",
+  "reporter": {
+    "reference": "Organization/X410011",
+    "display": "NORTH COUNTY HOSPITAL"
+  },
+  "period": {
+    "start": "2020-05-08",
+    "end": "2020-05-08"
+  },
+  "group": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasureGroupSystem",
+            "code": "positiveIncreasePercent",
+            "display": "Percent Positive among Newly Resulted Tests"
+          }
+        ],
+        "text": "# of new positive test results released / # of total new tests released for previous date queried"
+      },
+      "population": [
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "totalOrdersIncrease",
+                "display": "New Diagnostic Tests Ordered/Received"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "initial-population",
+                "display": "Initial Population"
+              }
+            ],
+            "text": "Midnight to midnight cutoff, tests ordered on previous date queried."
+          },
+          "count": 66
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "totalTestResultsIncrease",
+                "display": "New Tests Resulted"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "denominator"
+              }
+            ],
+            "text": "Midnight to midnight cutoff, test results released on previous date queried."
+          },
+          "count": 88
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "positiveIncrease",
+                "display": "New Positive COVID-19 Tests"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "numerator"
+              }
+            ],
+            "text": "Midnight to midnight cutoff, positive test results released on the previous date queried."
+          },
+          "count": 16
+        }
+      ],
+      "measureScore": {
+        "value": 0.5
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasureGroupSystem",
+            "code": "positivePercent",
+            "display": "Cumulative Percent Positive among Newly Resulted Tests"
+          }
+        ],
+        "text": "# of total positive results to released date / # of total tests results released to date"
+      },
+      "population": [
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "totalOrders",
+                "display": "Cumulative Diagnostic Tests Ordered/Received"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "initial-population",
+                "display": "Initial Population"
+              }
+            ],
+            "text": "All tests ordered to date."
+          },
+          "count": 66
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "totalTestResults",
+                "display": "Cumulative Tests Performed"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "denominator"
+              }
+            ],
+            "text": "All tests with results released to date."
+          },
+          "count": 65
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/saner/CodeSystem/MeasurePopulationSystem",
+                "code": "positive",
+                "display": "Cumulative Positive COVID-19 Tests"
+              },
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                "code": "numerator"
+              }
+            ],
+            "text": "All positive test results released to date."
+          },
+          "count": 16
+        }
+      ],
+      "measureScore": {
+        "value": 0.5
+      }
+    }
+  ]
+}

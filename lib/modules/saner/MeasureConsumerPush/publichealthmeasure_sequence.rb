@@ -12,7 +12,7 @@ module Inferno
 
       test_id_prefix 'SPHME'
 
-      requires :measure_id
+      requires
       conformance_supports :Measure
 
       @resource_found = nil
@@ -29,14 +29,15 @@ module Inferno
           versions :r4
         end
 
-        resource = FHIR::Measure.new
+        measure_example = File.read(File.expand_path('./resources/saner/saner-measure-example.json'))
+        resource = FHIR.from_contents(measure_example)
         @resource_created_response = validate_create_reply(resource, FHIR::Measure)
       end
 
       test :resource_update do
         metadata do
           id '02'
-          name 'Server creates Measure resource with the Measure create interaction'
+          name 'Server updates Measure resource with the Measure update interaction'
           link 'http://build.fhir.org/ig/HL7/fhir-saner/index.html'
           optional
           description %(
@@ -45,8 +46,9 @@ module Inferno
           versions :r4
         end
 
-        resource = FHIR::Measure.new
-        @resource_created_response = validate_update_reply(resource, FHIR::Measure)
+        measure_example = File.read(File.expand_path('./resources/saner/saner-measure-example.json'))
+        resource = FHIR.from_contents(measure_example)
+        @resource_updated_response = validate_update_reply(resource, FHIR::Measure)
       end
     end
   end

@@ -113,7 +113,7 @@ module Inferno
         skip 'No resources appear to be available for this patient. Please use patients with more information.' unless @resources_found
 
         @medication_orders.each do |medication_order|
-          validate_read_reply(medication_order, versioned_resource_class('MedicationOrder')).resource
+          validate_read_reply(medication_order, versioned_resource_class('MedicationOrder'))
         end
       end
 
@@ -189,7 +189,7 @@ module Inferno
         pass 'Test passes because all medication resource references are contained within the medication orders.' if not_contained_refs.empty?
 
         not_contained_refs&.each do |medication|
-          validate_read_reply(medication, versioned_resource_class('Medication')).resource
+          validate_read_reply(medication, versioned_resource_class('Medication'))
         end
       end
 
