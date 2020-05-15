@@ -558,7 +558,7 @@ module Inferno
         read_response
       end
 
-      def validate_create_reply(resource, reply_handler = nil)
+      def validate_create_reply(resource, _klass, reply_handler = nil)
         create_response = @client.create(resource)
 
         # Check that the create was a success (HTTP status code 201)
@@ -566,10 +566,10 @@ module Inferno
         assert create_response.code == 201, "Bad response code: expected 201, but found #{create_response.code}"
         assert create_response.response[:headers]['location'], "Expected Location Header, found #{create_response.response[:headers].keys}"
 
-        reply_handler&.call(reply)
+        reply_handler&.call(create_response)
       end
 
-      def validate_update_reply(resource, reply_handler = nil)
+      def validate_update_reply(resource, _klass, reply_handler = nil)
         update_response = @client.update(resource, resource.id)
 
         # Check that the create was a success (HTTP status code 201)
@@ -581,7 +581,7 @@ module Inferno
           assert update_response.response[:headers]['etag'], "Expected ETAG Header, found #{update_response.response[:headers].keys}"
         end
 
-        reply_handler&.call(reply)
+        reply_handler&.call(update_response)
       end
 
       def validate_history_reply(resource, klass)
