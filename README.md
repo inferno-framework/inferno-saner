@@ -26,19 +26,19 @@ Docker is the recommended installation method for Windows devices and can also
 be used on Linux and MacOS hosts.
 
 1. Install [Docker](https://www.docker.com/) for the host platform as well as
-   the [docker-compose](https://docs.docker.com/compose/install/) tool (which
+   the [docker compose](https://docs.docker.com/compose/install/) tool (which
    may be included in the distribution, as is the case for Windows and MacOS).
 2. Download the [latest release of the `inferno`
    project](https://github.com/onc-healthit/inferno/releases) to your local
    computer on a directory of your choice.
 3. Open a terminal in the directory where the project was downloaded (above).
-4. Run the command `docker-compose up` to start the server. This will
+4. Run the command `docker compose up` to start the server. This will
    automatically build the Docker image and launch both the ruby server (using
    unicorn) and an NGINX web server.
 5. Navigate to http://localhost:4567 to find the running application.
 
 If the docker image gets out of sync with the underlying system, such as when
-new dependencies are added to the application, you need to run `docker-compose
+new dependencies are added to the application, you need to run `docker compose
 up --build` to rebuild the containers.
 
 Check out the [Troubleshooting
@@ -99,13 +99,13 @@ Prerequisites:
 
 You can prebuild the terminology docker container by running the following command:
 ```sh
-docker-compose -f terminology_compose.yml build
+docker compose -f terminology_compose.yml build
 ```
 Once the container is built, you can run the terminology creation task by using the following commands, in order:
 ```sh
 export UMLS_USERNAME=<your UMLS username>
 export UMLS_PASSWORD=<your UMLS password>
-docker-compose -f terminology_compose.yml up
+docker compose -f terminology_compose.yml up
 ```
 This will run the terminology creation steps in order, using the UMLS credentials supplied. These tasks may take several hours. If the creation task is cancelled in progress and restarted, it will restart after the last _completed_ step. Intermediate files are saved to `tmp/terminology` in the Inferno repository that the Docker Compose job is run from, and the validators are saved to `resources/terminology/validators/bloom`, where Inferno can use them for validation.
 
